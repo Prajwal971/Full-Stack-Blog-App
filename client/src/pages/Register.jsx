@@ -24,7 +24,6 @@ const Register = () => {
     } catch (error) {
       setError(error.response.data)
     }
-    
   }
 
   return (

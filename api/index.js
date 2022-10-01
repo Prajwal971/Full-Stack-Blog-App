@@ -2,10 +2,12 @@ import express from "express";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import cookieParser from "cookie-parser"
 
 const app = express()
 
 app.use(express.json()) //SO that we will be able to send any data to the DB
+app.use(cookieParser())
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
