@@ -1,12 +1,13 @@
 import React from 'react'
 import Logo from "../img/logo.png"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../context/authContext'
 
 const Navbar = () => {
 
   const { currentUser, logout } = useContext(AuthContext);
+  const navigate = useNavigate()
 
 
   return (
@@ -38,7 +39,7 @@ const Navbar = () => {
           </Link>
           <span>{currentUser?.username}</span>
           {currentUser ? (
-            <span onClick={logout}>Logout</span>
+            <span onClick={logout}><Link to="/">Logout</Link></span>
           ) : (
             <Link className='link' to="/Login">
               Login

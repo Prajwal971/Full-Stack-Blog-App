@@ -46,19 +46,24 @@ const Home = () => {
   //     img: "https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   //   },
   // ]
+
+  const getTest = (html) => {
+    const doc = new DOMParser().parseFromString(html,"text/html")
+    return doc.body.textContent
+  }
   return (
     <div className="home">
       <div className="posts">
         {posts.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
-              <img src={post.img} alt="" />
+              <img src={`../upload/${post.img}`} alt="" />
             </div>
             <div className="content">
               <Link className='link' to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
-              <p>{post.desc}</p>
+              <p>{getTest(post.desc)}</p>
               <button>Read MOre</button>
             </div>
           </div>
